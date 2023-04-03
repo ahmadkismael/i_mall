@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-ROOT_PATH = os.path.dirname(__file__)
+# ROOT_PATH = os.path.dirname(__file__)
 
 
 
@@ -82,6 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':'i_mall',
+        # 'USER': 'postgres',
+        # 'PASSWORD': '2036'
     }
 }
 
