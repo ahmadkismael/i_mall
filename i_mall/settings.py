@@ -80,6 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':'i_mall',
+        'USER': 'postgres',
+        # 'PASSWORD': '2036'
     }
 }
 
