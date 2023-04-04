@@ -4,8 +4,7 @@ from .models import *
 # Create your views here.
 
 def main(request):
-    context = {}
-    return render(request, 'i_mall/main.html', context)
+    return render(request, 'i_mall/main.html')
 
 def store(request):
     products = Product.objects.all()
