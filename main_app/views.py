@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 
@@ -7,7 +8,8 @@ def main(request):
     return render(request, 'i_mall/main.html', context)
 
 def store(request):
-    context = {}
+    products = Product.objects.all()
+    context = {'products': products}
     return render(request, 'i_mall/store.html', context)
 
 
