@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import *
-from django.contrib.auth.models import User
-
+from django.http import JsonResponse #Link up HTTP json to backend to be able to use JS in frontend
+from .models import * #Gets ALL models
+from django.contrib.auth.models import User #USER AUTH
 
 # Create your views here.
 
@@ -41,3 +41,8 @@ def checkout(request):
 
 	context = {'items':items, 'order':order}
 	return render(request, 'i_mall/checkout.html', context)
+
+#Function that requests from HTML Json response that checks if ITEM was ADDED or NOT
+def updateItem(request):
+    return(JsonResponse('Item was added Successfully', safe=False))
+
