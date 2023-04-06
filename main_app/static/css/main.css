@@ -2,6 +2,13 @@ body{
 	background-color: #D8D8D8;
 }
 
+.logoimg{
+  width:40%;
+  height: auto;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
 h1,h2,h3,h4,h5,h6{
 	color:hsl(0, 0%, 30%);
 }
@@ -3711,6 +3718,7 @@ textarea.form-control-lg {
   display: block;
   padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
   font-size: var(--bs-nav-link-font-size);
+  font-size: 25px;
   font-weight: var(--bs-nav-link-font-weight);
   color: var(--bs-nav-link-color);
   text-decoration: none;
