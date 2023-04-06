@@ -1,10 +1,11 @@
-{% extends 'store/main.html' %}
+{% extends 'i_mall/main.html' %}
 {% load static %}
 {% block content %}
      <div class="row">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper">
 				<form id="form">
+					{% csrf_token %}
 					<div id="user-info">
 						<div class="form-field">
 							<input required class="form-control" type="text" name="name" placeholder="Name..">
@@ -69,8 +70,9 @@
 	</div>
 
 	<script type="text/javascript">
-		var shipping = '{{order.shipping}}'
-		var total = '{{order.get_cart_total}}'
+		let csrftoken = getToken('csrftoken')
+		let shipping = '{{order.shipping}}'
+		let total = '{{order.get_cart_total|floatformat:2}}'
 
 		if (shipping == 'False'){
 		 	document.getElementById('shipping-info').innerHTML = ''
@@ -87,7 +89,11 @@
 			    document.getElementById('payment-info').classList.remove("hidden");
 		}
 
-		var form = document.getElementById('form')
+		let form = document.getElementById('form')
+		csrftoken = form.getElementsByTagName("input")[0].value
+		console.log('Newtoken:', form.getElementsByTagName("input")[0].value)
+
+
 		form.addEventListener('submit', function(e){
 	    	e.preventDefault()
 	    	console.log('Form Submitted...')
@@ -102,13 +108,13 @@
 	    function submitFormData(){
 	    	console.log('Payment button clicked')
 
-	    	var userFormData = {
+	    	let userFormData = {
 				'name':null,
 				'email':null,
 				'total':total,
 			}
 
-			var shippingInfo = {
+			let shippingInfo = {
 				'address':null,
 				'city':null,
 				'state':null,
@@ -130,11 +136,11 @@
 	    	console.log('Shipping Info:', shippingInfo)
 	    	console.log('User Info:', userFormData)
 
-	    	var url = "/process_order/"
+	    	let url = "/process_order/"
 	    	fetch(url, {
 	    		method:'POST',
 	    		headers:{
-	    			'Content-Type':'applicaiton/json',
+	    			'Content-Type':'application/json',
 	    			'X-CSRFToken':csrftoken,
 	    		}, 
 	    		body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}),
@@ -148,5 +154,6 @@
 
 				})
 	    }
+		
 	</script>
 {% endblock content %}
