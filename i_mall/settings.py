@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    "whitenoise.runserver_nostatic",
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -127,13 +129,21 @@ STATIC_URL = 'static/'
 LOGIN_REDIRECT_URL = '/store/'
 LOGOUT_REDIRECT_URL = '/'
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static/css/main.css')
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static/')
+]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 
 
 
