@@ -74,17 +74,36 @@
               <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
             </li>
           </ul>
-
-            <div class="form-inline my-2 my-lg-0">
-                <a href="#"class="btn btn-warning">Login</a>
-                
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'logout' %}">Logout <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          {% if user.is_authenticated %}
+                {% else %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'signup' %}">Signup <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          {% endif %}
                 <a href="{% url 'cart' %}">
                     <img  id="cart-icon" src="{% static 'images/cart.png' %}">
                 </a>
                 <p id="cart-total">{{cartItems}}</p>
 
-            </div>
-          
+                
+        </div>
+        </div>
+        </div>
         </div>
     </nav>
 

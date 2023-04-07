@@ -1,0 +1,15 @@
+{% extends 'i_mall/main.html' %}
+{% block content %}
+
+<h1>Sign Up</h1>
+
+<p class="red-text">{{ error_message }}</p>
+
+<form class="col-lg-6" method="POST" action="{% url 'signup' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" class="btn btn-success" value="Sign Up">
+</form>
+
+
+{% endblock %}
