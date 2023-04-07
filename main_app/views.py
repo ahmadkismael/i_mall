@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.http import JsonResponse
 import json 
 import datetime
@@ -7,6 +9,25 @@ from .utils import cookieCart, cartData, guestOrder
 
 
 # Create your views here.
+
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+     
+      user = form.save()
+      customer = Customer.objects.create(user=user)  # Create a new customer object for the new user object
+      login(request, user)
+      
+      return redirect('/')
+    else:
+      error_message = 'Invalid sign up - try again'
+  
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'registration/signup.html', context)
 
 def home(request):
     return render(request, 'i_mall/home.html')
@@ -18,6 +39,7 @@ def store(request):
 	items = data['items']
 
 	products = Product.objects.all()
+    
 	context = {'products':products, 'cartItems':cartItems}
 	return render(request, 'i_mall/store.html', context)
 
