@@ -122,14 +122,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 
-STATIC_URL = 'static/css/main.css'
+STATIC_URL = 'static/'
 
 LOGIN_REDIRECT_URL = '/store/'
 LOGOUT_REDIRECT_URL = '/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/css/main.css')
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static/css/main.css')
+# ]
 
 MEDIA_URL = '/images/'
 
