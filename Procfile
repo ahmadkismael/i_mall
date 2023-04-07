@@ -1,0 +1,1 @@
+web: gunicorn i_mall.wsgi
