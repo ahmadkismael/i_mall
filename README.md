@@ -13,3 +13,5 @@ I was in the market for a new pair of wireless earbuds, so I decided to search f
 Stretch Goals
 Implementing an Api that lets you see the most trending items.
 Create a database using the S3 bucket.
+
+
