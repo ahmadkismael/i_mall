@@ -16,5 +16,3 @@ Create a database using the S3 bucket.
 
 
 
-
-
